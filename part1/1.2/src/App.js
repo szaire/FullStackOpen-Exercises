@@ -12,7 +12,7 @@ const Content = (props) => (
 
 const Part = (props) => (
   <p>
-    {props.part}: {props.ex}<br />
+    {props.part}: {props.ex}
   </p>
 )
 
