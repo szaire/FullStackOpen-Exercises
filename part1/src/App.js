@@ -6,7 +6,9 @@ const App = () => {
 
   return (
     <div>
-      <p>Hello world! It is {now.toString()}</p>
+      <p>
+        Hello world! It is {now.toString()}
+      </p>
       <p>
         {a} + {b} = {a + b}
       </p>
