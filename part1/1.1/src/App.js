@@ -3,11 +3,17 @@ const Header = (props) => (
 )
 
 const Content = (props) => (
-  <p>
-    {props.part1}: {props.ex1}<br /><br />
-    {props.part2}: {props.ex2}<br /><br />
-    {props.part3}: {props.ex3}
-  </p>
+  <>
+    <p>
+      {props.part1}: {props.ex1}<br />
+    </p>
+    <p>
+      {props.part2}: {props.ex2}<br />
+    </p>
+    <p>
+      {props.part3}: {props.ex3}
+    </p>
+  </>
 )
 
 const Total = (props) => (
