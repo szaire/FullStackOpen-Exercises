@@ -1,25 +1,45 @@
-function App() {
+const Header = (props) => (
+  <h1>{props.name}</h1>
+)
+
+const Content = (props) => (
+  <p>
+    {props.part1}: {props.ex1}<br /><br />
+    {props.part2}: {props.ex2}<br /><br />
+    {props.part3}: {props.ex3}
+  </p>
+)
+
+const Total = (props) => (
+  <p>Number of exercises: {
+    props.ex1 +
+    props.ex2 +
+    props.ex3}
+  </p>
+)
+
+const App = () => {
   const course = "Half stack application development"
   const part1 = "Fundamentals of React"
-  const exrecises1 = 10
+  const exercises1 = 10
   const part2 = "Using props to pass data"
-  const exrecises2 = 7
+  const exercises2 = 7
   const part3 = "State of a component"
-  const exrecises3 = 14
+  const exercises3 = 14
 
   return (
     <>
-      <h1>{course}</h1>
-      <p>
-        {part1}: {exrecises1}
-      </p>
-      <p>
-        {part2}: {exrecises2}
-      </p>
-      <p>
-        {part3}: {exrecises3}
-      </p>
-      <p>Number of exercises: {exrecises1 + exrecises2 + exrecises3}</p>
+      <Header name={course} />
+      <Content
+        part1={part1} ex1={exercises1}
+        part2={part2} ex2={exercises2}
+        part3={part3} ex3={exercises3}
+      />
+      <Total
+        ex1={exercises1}
+        ex2={exercises2}
+        ex3={exercises3}
+      />
     </>
   )
 }
