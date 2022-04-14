@@ -1,17 +1,17 @@
+const Hello = () => {
+  return (
+    <div>
+      <p>Hello World!</p>
+    </div>
+  )
+}
+
 const App = () => {
-  console.log('Hello World! from component')
-  const now = new Date()
-  const a = 10
-  const b = 20
 
   return (
     <div>
-      <p>
-        Hello world! It is {now.toString()}
-      </p>
-      <p>
-        {a} + {b} = {a + b}
-      </p>
+      <p>Greetings,<br/> New User!</p>
+      <Hello/>
     </div>
   )
 }
