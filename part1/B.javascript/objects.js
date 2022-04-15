@@ -24,6 +24,9 @@ console.log(object3.name.first + " " + object3.name.last);
 console.log(object3['name']['first'] + " " + object3['name']['last']);
 
 object2.content = 'parts 0 - 15'
-console.log(object2['name']);
+object2['copyright'] = 'Helsinki University'
 console.log(object2['content']);
+console.log(object2.copyright);
 
+const name = object1.name
+console.log(name);
