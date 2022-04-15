@@ -1,5 +1,5 @@
 const Header = (props) => {
-  console.log(props);
+  console.log("Stop!");
   return <h1>{props.name}</h1>
 }
 
