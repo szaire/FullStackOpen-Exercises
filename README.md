@@ -6,4 +6,4 @@ Repo page for 'parts' exercises (master-branch)
 * part 1: 56m (...)
 
 # Important!
-Always remember delete node_modules for each ecercises
+Always remember to delete 'node_modules' for each ecercises
