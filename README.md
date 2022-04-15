@@ -10,4 +10,4 @@ Repo page for 'parts' exercises (master-branch)
 ----------------------
 
 # Important!
-Always remember to delete 'node_modules' for each ecercises
+Always remember to delete 'node_modules' for each exercise
