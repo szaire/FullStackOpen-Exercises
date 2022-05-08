@@ -47,20 +47,6 @@ function App() {
     setStats({total: stats.total + 1})
   }
 
-  const avarage = (a, b) => {
-    if (a === 0) {
-      return 0
-    }
-    return Math.abs((a - b)/stats.total)
-  }
-
-  const positive = (x) => {
-    if (x === 0) {
-      return 0 + " %"
-    }
-    return (x/stats.total)*100 + " %"
-  }
-
   return (
     <>
       <Title title={'give feedback'} />
@@ -72,8 +58,8 @@ function App() {
       <History title={'neutral'} amount={feedback.neutral} />
       <History title={'bad'} amount={feedback.bad} />
       <Statistic title={'all'} num={stats.total} />
-      <Statistic title={'avarage'} num={avarage(feedback.good, feedback.bad)} />
-      <Statistic title={'positive'} num={positive(feedback.good)} />
+      <Statistic title={'avarage'} num={Math.abs((feedback.good - feedback.bad)/stats.total)} />
+      <Statistic title={'positive'} num={(feedback.good/stats.total)*100 + " %"} />
     </>
   );
 }
