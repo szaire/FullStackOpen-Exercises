@@ -52,7 +52,7 @@ function App() {
     return Math.abs((a - b)/total)
   }
 
-  const positive = (x) => {
+  const positive = x => {
     if (x === 0) {
       return 0 + " %"
     }
