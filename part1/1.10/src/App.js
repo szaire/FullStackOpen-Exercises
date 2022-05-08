@@ -72,6 +72,7 @@ function App() {
     return (a/total(a, b, c))*100 + " %"
   }
 
+  
   return (
     <>
       <Title title={'give feedback'} />
