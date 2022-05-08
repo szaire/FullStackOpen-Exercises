@@ -1,16 +1,5 @@
 import { useState } from "react";
 
-const Feedback = ({ good, neutral, bad, func1, func2, func3 }) => {
-  if (good === 0 && neutral === 0 && bad === 0) {
-    return "No feedback given :(";
-  }
-  return (
-    <div>
-
-    </div>
-  )
-}
-
 const Statistic = ({ title, stat }) => <p>{title}: {stat}</p>;
 
 const Title = ({ title }) => <h2>{title}</h2>;
