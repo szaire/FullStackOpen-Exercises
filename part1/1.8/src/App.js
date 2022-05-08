@@ -1,8 +1,22 @@
 import { useState } from "react";
 
-const History = ({ title, amount }) => <p>{title}: {amount}</p>;
+const Feedback = ({ good, neutral, bad, func1, func2, func3 }) => {
+  if (good === 0 && neutral === 0 && bad === 0) {
+    return "No given feedback :c";
+  }
+  return (
+    <div>
+      <Statistic title={'good'} stat={good} />
+      <Statistic title={'neutral'} stat={neutral} />
+      <Statistic title={'bad'} stat={bad} />
+      <Statistic title={'all'} stat={func1} />
+      <Statistic title={'avarage'} stat={func2} />
+      <Statistic title={'positive'} stat={func3} />
+    </div>
+  )
+}
 
-const Statistic = ({ title, num }) => <p>{title}: {num}</p>;
+const Statistic = ({ title, stat }) => <p>{title}: {stat}</p>;
 
 const Title = ({ title }) => <h2>{title}</h2>;
 
@@ -19,14 +33,12 @@ function App() {
     bad: 0,
   });
   
-  const [total, setTotal] = useState(0);
-
+  // Feedback Gross Statistcs
   const increaseGoodFeedback = () => {
     setFeedback({
       ...feedback,
       good: feedback.good + 1,
     })
-    setTotal(total + 1)
   }
   
   const increaseNeutralFeedback = () => {
@@ -34,7 +46,6 @@ function App() {
       ...feedback,
       neutral: feedback.neutral + 1,
     })
-    setTotal(total + 1)
   }
 
   const increaseBadFeedback = () => {
@@ -42,21 +53,21 @@ function App() {
       ...feedback,
       bad: feedback.bad + 1,
     })
-    setTotal(total + 1)
   }
 
-  const avarage = (a, b) => {
+  // Feedback Statistics
+  const total = (a, b, c) => a + b + c;
+  const avarage = (a, b, c) => {
     if (a === 0) {
       return 0
     }
-    return Math.abs((a - b)/total)
+    return Math.abs((a - c)/total(a, b, c))
   }
-
-  const positive = x => {
-    if (x === 0) {
+  const positive = (a, b, c) => {
+    if (a === 0) {
       return 0 + " %"
     }
-    return (x/total)*100 + " %"
+    return (a/total(a, b, c))*100 + " %"
   }
 
   return (
@@ -66,12 +77,14 @@ function App() {
       <Button onClick={increaseNeutralFeedback} title={'neutral'} /> 
       <Button onClick={increaseBadFeedback} title={'bad'} /> 
       <Title title={'statistics'} />
-      <History title={'good'} amount={feedback.good} />
-      <History title={'neutral'} amount={feedback.neutral} />
-      <History title={'bad'} amount={feedback.bad} />
-      <Statistic title={'all'} num={total} />
-      <Statistic title={'avarage'} num={avarage(feedback.good, feedback.bad)} />
-      <Statistic title={'positive'} num={positive(feedback.good)} />
+      <Feedback 
+        good={feedback.good}
+        neutral={feedback.neutral}
+        bad={feedback.bad}
+        func1={total(feedback.good, feedback.neutral, feedback.bad)}
+        func2={avarage(feedback.good, feedback.neutral, feedback.bad)}
+        func3={positive(feedback.good, feedback.neutral, feedback.bad)}
+      />      
     </>
   );
 }
