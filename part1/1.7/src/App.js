@@ -28,10 +28,7 @@ function App() {
       ...feedback,
       good: feedback.good + 1,
     })
-    setStats({
-      ...stats,
-      total: stats.total + 1,
-    })
+    setStats({total: stats.total + 1})
   }
   
   const increaseNeutralFeedback = () => {
@@ -39,10 +36,7 @@ function App() {
       ...feedback,
       neutral: feedback.neutral + 1,
     })
-    setStats({
-      ...stats,
-      total: stats.total + 1,
-    })
+    setStats({total: stats.total + 1})
   }
 
   const increaseBadFeedback = () => {
@@ -50,10 +44,7 @@ function App() {
       ...feedback,
       bad: feedback.bad + 1,
     })
-    setStats({
-      ...stats,
-      total: stats.total + 1,  
-    })
+    setStats({total: stats.total + 1})
   }
 
   const avarage = (a, b) => {
