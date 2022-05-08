@@ -2,16 +2,11 @@ import { useState } from "react";
 
 const Feedback = ({ good, neutral, bad, func1, func2, func3 }) => {
   if (good === 0 && neutral === 0 && bad === 0) {
-    return "No given feedback :c";
+    return "No feedback given :(";
   }
   return (
     <div>
-      <Statistic title={'good'} stat={good} />
-      <Statistic title={'neutral'} stat={neutral} />
-      <Statistic title={'bad'} stat={bad} />
-      <Statistic title={'all'} stat={func1} />
-      <Statistic title={'avarage'} stat={func2} />
-      <Statistic title={'positive'} stat={func3} />
+
     </div>
   )
 }
@@ -33,7 +28,6 @@ function App() {
     bad: 0,
   });
   
-  // Feedback Gross Statistcs
   const increaseGoodFeedback = () => {
     setFeedback({
       ...feedback,
@@ -55,14 +49,15 @@ function App() {
     })
   }
 
-  // Feedback Statistics
-  const total = (a, b, c) => a + b + c;
+  const total = (a, b, c) =>  a + b + c;
+
   const avarage = (a, b, c) => {
-    if (a === 0) {
+    if (a === 0 || b === 0) {
       return 0
     }
-    return Math.abs((a - c)/total(a, b, c))
+    return Math.abs(a - b)/total(a, b, c)
   }
+
   const positive = (a, b, c) => {
     if (a === 0) {
       return 0 + " %"
@@ -77,14 +72,12 @@ function App() {
       <Button onClick={increaseNeutralFeedback} title={'neutral'} /> 
       <Button onClick={increaseBadFeedback} title={'bad'} /> 
       <Title title={'statistics'} />
-      <Feedback 
-        good={feedback.good}
-        neutral={feedback.neutral}
-        bad={feedback.bad}
-        func1={total(feedback.good, feedback.neutral, feedback.bad)}
-        func2={avarage(feedback.good, feedback.neutral, feedback.bad)}
-        func3={positive(feedback.good, feedback.neutral, feedback.bad)}
-      />      
+      <Statistic title={'good'} stat={feedback.good} />
+      <Statistic title={'neutral'} stat={feedback.neutral} />
+      <Statistic title={'bad'} stat={feedback.bad} />
+      <Statistic title={'all'} stat={total(feedback.good, feedback.neutral, feedback.bad)} />
+      <Statistic title={'avarage'} stat={avarage(feedback.good, feedback.neutral, feedback.bad)} />
+      <Statistic title={'positive'} stat={positive(feedback.good, feedback.neutral, feedback.bad)} />    
     </>
   );
 }
