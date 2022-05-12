@@ -8,6 +8,3 @@ Repo page for 'parts' exercises (master-branch)
 * part 1: 3h 00m (...)
 
 ----------------------
-
-# Important!
-Always remember to delete 'node_modules' for each exercise
