@@ -1,0 +1,66 @@
+import { useState } from "react"; 
+
+const Title = ({ text }) => <h2>{text}</h2>
+
+const Display = ({ text }) => <div>{text}</div>
+
+const VotesLine = ({ value}) => <p><b>has {value} votes</b></p>
+
+const Button = ({ onClick, text }) => ( 
+  <button onClick={onClick}> 
+    {text} 
+  </button> 
+) 
+ 
+const App = () => { 
+  // Anecdotes DB 
+  const anecdotes = [ 
+    'If it hurts, do it more often', 
+    'Adding manpower to a late software project makes it later!', 
+    'The first 90 percent of the code accounts for the first 10 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.', 
+    'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.', 
+    'Premature optimization is the root of all evil.', 
+    'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.', 
+    'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.'
+  ];
+
+  // Stateful Value 
+  const [selected, setSelected] = useState(0); 
+  const [points, setPoints] = useState(Array(anecdotes.length).fill(0))
+
+  // functions 
+  const getRandomAnecdoteExc = () => {
+    setSelected(Math.floor(Math.random() * (anecdotes.length - 0))); 
+  } 
+  const incrementVote = () => {
+    const copy = [...points] // copy the array to another
+    copy[selected] += 1 // upvote the array with the selected index
+    setPoints(copy)
+  }
+  const mostVotedIndex = () => {
+    const mostVoted = Math.max.apply(null, points)
+   
+    if (mostVoted === 0) {
+      return 0
+    }
+    else {
+      const mostVotedIndex = points.indexOf(mostVoted)
+      return mostVotedIndex
+    }
+  }
+ 
+  return ( 
+    <>
+      <Title text={'Anecdote of the day!'} />
+      <Display text={anecdotes[selected]} />
+      <VotesLine value={points[selected]} />
+      <Button onClick={incrementVote} text={'Vote!'} />
+      <Button onClick={getRandomAnecdoteExc} text={'Another anecdote'} />
+      <Title text={'Anecdote with most votes'} />
+      <Display text={anecdotes[mostVotedIndex()]} />
+      <VotesLine value={points[mostVotedIndex()]} />
+    </> 
+  ) 
+} 
+ 
+export default App
