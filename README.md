@@ -3,7 +3,7 @@ Repo page for 'parts' exercises (master-branch)
 
 ----------------------
 
-# Progress:
+# Task Progress:
 * part 0: 1h 20m ✅
 * part 1: 3h 00m ✅
   * read "A re-introduction to JavaScript" (...)
